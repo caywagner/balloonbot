@@ -1,6 +1,6 @@
 {
   "name": "balloonbot",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,20 +9,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnpapa/node-hello.git"
+    "url": "git+https://github.com/caywagner/balloonbot"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/johnpapa/node-hello/issues"
+    "url": "https://github.com/caywagner/balloonbotissues"
   },
-  "homepage": "https://github.com/johnpapa/node-hello#readme",
+  "homepage": "https://github.com/caywagner/balloonbot#readme",
   "dependencies": {
     "@slack/events-api": "^2.3.2",
     "@slack/interactive-messages": "^1.5.0",
     "@slack/rtm-api": "^5.0.3",
     "@slack/web-api": "^5.8.0",
-    "@slack/webhook": "^5.0.3"
+    "@slack/webhook": "^5.0.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-localstorage": "^2.1.5",
+    "passport": "^0.4.1",
+    "passport-slack": "0.0.7"
   }
 }
