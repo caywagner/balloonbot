@@ -53,7 +53,7 @@ var challenge = require('./features/challenge');
 
 // link slack events
 slackEvents.on('message', require('./features/hello').hello);
-slackEvents.on('message', require('./features/introduce_yourself').introduction)
+slackEvents.on('message', require('./features/introduce_yourself').introduction);
 
 // ^ touch
 // *****************************************************************************
