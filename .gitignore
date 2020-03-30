@@ -3,3 +3,4 @@ node_modules/
 ngrok
 init_env.sh
 .vscode
+.env
