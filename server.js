@@ -15,7 +15,7 @@ var slackEvents = slackEventsApi.createEventAdapter(process.env.SLACK_SIGNING_SE
     includeBody: true
 });
 
-// setup the strategy using defaults 
+// setup the strategy using defaults
 passport.use(new SlackStrategy({
     clientID: process.env.SLACK_CLIENT_ID,
     clientSecret: process.env.SLACK_CLIENT_SECRET,
@@ -33,7 +33,7 @@ app.use(passport.initialize());
 app.get('/auth/slack', passport.authorize('slack'));
 
 // OAuth callback url
-app.get('/auth/slack/callback', 
+app.get('/auth/slack/callback',
   passport.authorize('slack', { failureRedirect: '/login' }),
   (req, res) => res.redirect('/')
 );
@@ -57,7 +57,7 @@ slackEvents.on('message', require('./features/introduce_yourself').introduction)
 
 // ^ touch
 // *****************************************************************************
-// v dont touch 
+// v dont touch
 
 const port = process.env.PORT || 3000;
 const server = http.createServer(slackEvents.requestListener());

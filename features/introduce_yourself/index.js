@@ -21,12 +21,12 @@ function introduction(message, body) {
         return console.error('No authorization found for this team. Did you install the app through the url provided by ngrok?');
     }
     // Respond to the message back in the same channel
-    slack.chat.postMessage({ channel: message.channel, 
+    slack.chat.postMessage({ channel: message.channel,
         text: `Hi everyone! I'm balloonbot :balloon:
 
-I'll help around our workspace and have fun ruthlessly antagonizing instructors! 
+I'll help around our workspace and have fun ruthlessly antagonizing instructors!
 
-If you want to help develop me and learn how to make a balloon talk, come join my overlords on <#CUP0G2WHJ>!` 
+If you want to help develop me and learn how to make a balloon talk, come join my overlords on <#CUP0G2WHJ>!`
     })
         .catch(console.error);
     }
