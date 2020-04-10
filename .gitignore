@@ -3,6 +3,7 @@
 # Virtual Environments
 env/
 botenv/
+init_env.sh
 
 # node/npm stuff
 node_modules/
