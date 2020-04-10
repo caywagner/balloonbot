@@ -1,7 +1,14 @@
+## gitignore file for slackbot with nodejs
+
+# Virtual Environments
 env/
 botenv/
+
+# node/npm stuff
 node_modules/
-ngrok
-init_env.sh
-.vscode
+npm-debug.log
 .env
+
+# other
+ngrok
+.vscode
