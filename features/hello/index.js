@@ -24,7 +24,7 @@ function hello(message, body) {
     }
     // Respond to the message back in the same channel
     console.log('said hi!');
-    slack.chat.postMessage({ channel: message.channel, text: `(testing one two three this is cool if it works) Hello <@${message.user}>! :tada:` })
+    slack.chat.postMessage({ channel: message.channel, text: `Hello <@${message.user}>! :tada:` })
         .catch(console.error);
     }
 
