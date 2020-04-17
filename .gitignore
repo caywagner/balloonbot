@@ -1,4 +1,4 @@
-## gitignore file for slackbot with nodejs TEST
+## gitignore file for slackbot with nodejs
 
 # Virtual Environments
 env/
