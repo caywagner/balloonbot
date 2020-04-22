@@ -92,6 +92,57 @@ slackEvents.on('message', (message, body) => {
     // Respond to the message back in the same channel
     slack.chat.postMessage({ channel: message.channel, text: `Hello <@${message.user}>! :tada:` })
       .catch(console.error);
+  } else if (!message.subtype && message.text.indexOf('!spec') == 0) {
+        const slack = new WebClient(process.env.BOT_TOKEN);
+          // Handle initialization failure
+          if (!slack) {
+            return console.error('No authorization found for this team. Did you install the app through the url provided by ngrok?');
+          }
+          // Respond to the message back in the same channel
+        message = message.substring(6);
+        if(message == "all") {
+          //for all keys yeehaw, not sure how to do in a message block
+          //slack.chat.postMessage({ channel: message.user.channel, text: `Here's the <{message}> specsheet: <{dict[spec_name]}>`}).catch(console.error);
+          slack.chat.postMessage({ channel: message.channel, text: `Send <@${message.user}> a list of all specsheets` })
+            .catch(console.error);
+        }
+        var dict = {
+            "ADXL335": "https://drive.google.com/file/d/1SQDVX4pyUmL4Bix31YxwA4BRA3nUb1xA/view?usp=sharing",
+            "Accelerometer" : "https://drive.google.com/file/d/1SQDVX4pyUmL4Bix31YxwA4BRA3nUb1xA/view?usp=sharing",
+            "B57164K": "https://drive.google.com/file/d/1NsWR_x83OhYsmL910Ml--_tHsuqDnts4/view?usp=sharing",
+            "thermistor" : "https://drive.google.com/file/d/1NsWR_x83OhYsmL910Ml--_tHsuqDnts4/view?usp=sharing",
+            "HIH-4030" : "https://drive.google.com/file/d/1_LNJdS-_JnDvOV4eXHjNEV6lEoOF4IUo/view?usp=sharing",
+            "Humidity Sensor" : "https://drive.google.com/file/d/1_LNJdS-_JnDvOV4eXHjNEV6lEoOF4IUo/view?usp=sharing",
+            "LinearRegulator": "https://drive.google.com/file/d/1uBG1QTpuwDYcjgUR08kW3rRDeN_U9pJT/view?usp=sharing",
+            "LM1117": "https://drive.google.com/file/d/1uBG1QTpuwDYcjgUR08kW3rRDeN_U9pJT/view?usp=sharing",
+            "Fixed Voltage Regulator": "https://drive.google.com/file/d/1tzmamWhObwSpM9S_n5xO9CppK5vneVoO/view?usp=sharing",
+            "LM7805": "https://drive.google.com/file/d/1tzmamWhObwSpM9S_n5xO9CppK5vneVoO/view?usp=sharing",
+            "MPX4115": "https://drive.google.com/file/d/1VazH0mFoq26qNE78Xmq48jDQQZBhiI8s/view?usp=sharing",
+            "Pressure Sensor": "https://drive.google.com/file/d/1VazH0mFoq26qNE78Xmq48jDQQZBhiI8s/view?usp=sharing",
+            "Micro Metal Gearmotors": "https://drive.google.com/file/d/1gWZcqazz1UgwP1TFWo4mwYfTRhf6-bgX/view?usp=sharing",
+            "Pololu 210-1": "https://drive.google.com/file/d/1gWZcqazz1UgwP1TFWo4mwYfTRhf6-bgX/view?usp=sharing",
+            "TMP36": "https://drive.google.com/file/d/14iAKnej6EEOFn9TSyiuXjsRfiS2MBA4x/view?usp=sharing",
+            "":,
+            "":,
+            "":,
+            1: "some value"
+        };
+        var spec_name = "";
+        search:
+        for(var key in dict) {
+            if(key == message) {
+                  spec_name = key;
+                  break search;
+            }
+        }
+        if(spec_name != "") {
+          slack.chat.postMessage({ channel: message.user.channel, text: `Here's the <{message}> specsheet: <{dict[spec_name]}>`}).catch(console.error);
+          slack.chat.postMessage({ channel: message.channel, text: `Send <@${message.user}> the <{message}> specsheet` })
+            .catch(console.error);
+        } else {
+              slack.chat.postMessage({ channel: message.channel, text: `Uh oh <@${message.user}>, I can't seem to find the <{message}> specsheet`}) //Type !spec all for a list of all specsheets???
+            .catch(console.error);
+        }
   }
 });
 
